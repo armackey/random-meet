@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <base href="/">
   <title>Video-Chat</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-<body>
+<body ng-app='app' icecomm apikey='e5cDAi61vIjVw5FYTObeghpvGyrVILlVx87kx3jnk75k3d/Bu'>
   
+
+<!-- js -->
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-ui-router/angular-ui-router.js"></script>
+<script src="app.js"></script>
+<script src="controllers/chat.ctrl.js"></script>
+
+<!-- directives -->
+<script src="https://cdn.icecomm.io/icecomm.js" ></script>
+<script src="directives/icecomm.directive.js"></script>
+<script src="directives/icecommConnect.directive.js"></script>
+<script src="directives/icecommLeave.directive.js"></script>
+<script src="directives/icecommLocal.directive.js"></script>
+<script src="directives/icecommPeer.directive.js"></script>
+<ui-view>
 </body>
 </html>
