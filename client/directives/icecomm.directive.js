@@ -16,6 +16,6 @@
         this.connect = comm.connect;
       },
       controllerAs: 'comm'
-    }
+    };
   }
 })();

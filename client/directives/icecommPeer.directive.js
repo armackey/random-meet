@@ -19,6 +19,7 @@
           $scope.$apply(function () {
             peer.stream = $sce.trustAsResourceUrl(peer.stream);
             $scope.peers.push(peer);
+            console.log($scope.peers);
           });
         });
 

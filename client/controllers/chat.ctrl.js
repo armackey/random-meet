@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('chatCtrl', ['$scope', function ($scope) {
+  .controller('chatCtrl', ['$scope', '$http', function ($scope, $http) {
     
 
   }]);
