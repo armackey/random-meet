@@ -1,6 +1,10 @@
-  <icecomm-connect></icecomm-connect>
-  <icecomm-local></icecomm-local/>
-  <icecomm-peer></icecomm-peer>
-  <icecomm-leave></icecomm-leave>
+<div ng-hide="foundRoom">
+  <icecomm-connect audio="false" limit='2' ng-hide="foundRoom"></icecomm-connect>
+  <br>
+  {{browser}} <br>
+  {{message.message}}
+</div>
 
-  {{message}}
+  <icecomm-peer id="peer" ></icecomm-peer>
+  <icecomm-local id="local"></icecomm-local/>
+  {{counter}}

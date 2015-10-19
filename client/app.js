@@ -5,19 +5,19 @@ angular.module('app',
     'icecomm.connect',
     'icecomm.local',
     'icecomm.peer',
-    'icecomm.leave',
+    'icecomm.leave'
   ])
   .config(function($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
     
     $stateProvider
-        .state('chat', {
+        .state('/chat', {
             url: '/',
-            templateUrl: 'partials/chat.html',
+            templateUrl: '/partials/chat.html',
             controller: 'chatCtrl',
             controllerAs: 'chatCtrl'
         });
        
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
 
   });
