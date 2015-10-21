@@ -15,11 +15,9 @@
       link: function($scope, ele, atts, icecomm) {
         var comm = icecomm.comm;
         $scope.peers = [];
-        
         comm.on("connected", function(peer){
-          console.log(comm, 'on connect');
+          
           $scope.counter = 10;
-          console.log('connected');
           $scope.onTimeout = function(){
               $scope.counter--;
               mytimeout = $timeout($scope.onTimeout,1000);
@@ -27,10 +25,10 @@
               if ($scope.counter === 0) {
                 // disconnect 
                 $timeout.cancel(mytimeout);
-                comm.leave();
+                $scope.connect();
                 $scope.counter = 10;
 
-                console.log('new room ', $scope.room);
+                
                 
               }
           };
@@ -51,7 +49,7 @@
             console.log(comm, 'on disconnect');
             console.log('lost peer');
             $scope.peers.splice($scope.peers.indexOf(peer),1);
-            $scope.chat();
+            
           // });
         });
       }

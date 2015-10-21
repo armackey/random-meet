@@ -29,7 +29,7 @@ angular.module('app')
           $scope.room = user.room;
           $http.put('/makeRoom', user); 
           $scope.foundRoom = true;
-          
+
         }
       }, 4000);
 

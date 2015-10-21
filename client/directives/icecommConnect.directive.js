@@ -9,29 +9,54 @@
       restrict: 'E',
       require: '^icecomm',
       replace: true,
-      scope: true,
+
       transclude: true,
       controller: 'chatCtrl',
-      template: '<button ng-click="connect()" room="{{room}}"  ng-hide="foundRoom">Connect</div>',
+      template: '<button ng-click="connect()" ng-hide="foundRoom">Connect</div>',
       link: function($scope, ele, atts, comm, chatCtrl) {
         // $scope.text = atts.text || "Connect";
-        console.log(chatCtrl());
-        console.log($scope);
-        console.log(atts);
+        // $scope.chat();
         $scope.connect = function() { 
+          var user = {};
+          $scope.foundRoom = false;
+          user.room = "";
+
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+          for (var i = 0; i < 5; i+=1 ) {
+            user.room += possible.charAt(Math.floor(Math.random() * possible.length));
+          } 
+
+          $http.get('/findRoom').success(function (data) {
+            $scope.message = data;
+            console.log($scope.message);
+            if (data.room) {
+              console.log('found room', data.room);
+              $scope.room = data.room;
+              var connectOptions = createConnectOptions();
+              comm.connect($scope.room, connectOptions);
+              $scope.foundRoom = true;
+            }
+          });
+
+          $timeout(function () {
+            if ($scope.foundRoom === false) {
+              $scope.message = 'Could not find room and now creating one';
+              console.log($scope.message);
+              $scope.room = user.room;
+              $http.put('/makeRoom', user); 
+              var connectOptions = createConnectOptions();
+              comm.connect($scope.room, connectOptions);
+              $scope.foundRoom = true;
+
+            }
+          }, 4000);
           console.log(atts.room);
-          $scope.chat();
           
-          var connectOptions = createConnectOptions();
-          comm.connect($scope.room, connectOptions);
+          console.log($scope.room);
+
           console.log(atts.room);
           console.log(atts);
         };
-
-        $timeout(function () {
-          console.log($scope);
-          console.log(atts);
-        }, 5000);
 
         function createConnectOptions() {
           var connectOptions = {};
