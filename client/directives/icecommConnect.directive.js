@@ -11,18 +11,28 @@
       replace: true,
       scope: true,
       transclude: true,
-      template: '<button ng-click="connect()" ng-hide="foundRoom">Connect</div>',
-      link: function(scope, ele, atts, comm) {
-        // scope.text = atts.text || "Connect";
-        
-        scope.connect = function() { 
+      controller: 'chatCtrl',
+      template: '<button ng-click="connect()" room="{{room}}"  ng-hide="foundRoom">Connect</div>',
+      link: function($scope, ele, atts, comm, chatCtrl) {
+        // $scope.text = atts.text || "Connect";
+        console.log(chatCtrl());
+        console.log($scope);
+        console.log(atts);
+        $scope.connect = function() { 
+          console.log(atts.room);
+          $scope.chat();
           
-          scope.chat();
-          console.log(scope.room);
           var connectOptions = createConnectOptions();
-          comm.connect(scope.room, connectOptions);
-
+          comm.connect($scope.room, connectOptions);
+          console.log(atts.room);
+          console.log(atts);
         };
+
+        $timeout(function () {
+          console.log($scope);
+          console.log(atts);
+        }, 5000);
+
         function createConnectOptions() {
           var connectOptions = {};
           if (atts.video === 'false') {
@@ -35,7 +45,7 @@
             connectOptions.stream = false;
           }
           if (!atts.limit) {
-            connectOptions.limit = atts.limit;
+            connectOptions.limit = 2;
           }
           return connectOptions;
         }

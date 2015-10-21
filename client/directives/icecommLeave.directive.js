@@ -19,7 +19,7 @@
         $scope.leave = function() {
           comm.leave();
           $scope.local = null;
-        }
+        };
       }
     };
   }

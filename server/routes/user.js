@@ -6,7 +6,6 @@ var User = require('../db/user'),
 router.put('/makeRoom', function(req, res) {
   User.create(req.body, function (err, user) {
     user.room  = req.body.room;
-    console.log(req.body, 'room created');
     user.save(req.body);
     res.send(user);
   });
@@ -21,6 +20,7 @@ router.get('/findRoom', function(req, res) {
       return user.room !== '';
     });
     var randomNum = Math.floor(Math.random() * rooms.length);
+    console.log(randomNum);
     if (!rooms[randomNum])
       res.send({message: 'Sorry, no current rooms available.'});
     else

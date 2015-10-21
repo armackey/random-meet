@@ -1,5 +1,6 @@
 angular.module('app')
   .controller('chatCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+    console.log($scope);
     $scope.browser = 'Works best in Chrome!';
     $scope.chat = function () {
       var user = {};
@@ -25,11 +26,12 @@ angular.module('app')
         if ($scope.foundRoom === false) {
           $scope.message = 'Could not find room and now creating one';
           console.log($scope.message);
-          console.log('created room', user.room);
+          $scope.room = user.room;
           $http.put('/makeRoom', user); 
           $scope.foundRoom = true;
+          
         }
-      }, 2000);
+      }, 4000);
 
       // delete room
       // $timeout(function () {
