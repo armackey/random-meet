@@ -10,8 +10,14 @@ angular.module('app',
   .config(function($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
     
     $stateProvider
-        .state('/chat', {
+        .state('home', {
             url: '/',
+            templateUrl: '/partials/home.html',
+            controller: 'chatCtrl',
+            controllerAs: 'chatCtrl'
+        })
+        .state('chat', {
+            url: '/chat',
             templateUrl: '/partials/chat.html',
             controller: 'chatCtrl',
             controllerAs: 'chatCtrl'

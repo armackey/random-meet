@@ -1,16 +1,10 @@
 
 <div ng-hide="foundRoom">
-  <icecomm-connect audio="false" ng-hide="foundRoom"></icecomm-connect>
-  <br>
-  {{browser}} <br>
-  {{message.message}}
+  {{message.message}} </br>
+ </br>
+  {{reconnect}}
 </div>
 
   <icecomm-peer id="peer" ></icecomm-peer>
   <icecomm-local id="local"></icecomm-local/>
   {{counter}}
-
-<div ng-hide="foundRoom">
-  <icecomm-connect audio="false" ng-hide="foundRoom"></icecomm-connect>
-  {{reconnect}}
-</div>

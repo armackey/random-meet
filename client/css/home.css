@@ -1,0 +1,137 @@
+
+
+
+#Layer_1 {
+  position: absolute;
+  top: 300px;
+}
+
+/* frames */
+.big-frame {
+  stroke-width: 5px;
+  stroke-dasharray: 800;
+  -webkit-animation: 4s big-frame forwards;
+  animation: 4s big-frame forwards;
+}
+/* frames */
+.small-frame{
+  stroke-width: 5px;
+  stroke-dasharray: 220;
+  -webkit-animation: 1s small-frame forwards;
+  animation: 1s small-frame forwards;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  opacity: 0;
+}
+
+#title {
+  -webkit-animation: 3s fade 1 forwards;
+  animation: 3s fade 1 forwards;
+  -webkit-animation-delay: 2s;
+  animation-delay: 4s;
+  fill: #fafafa;
+  opacity: 0;
+}
+
+/* persons */
+.persons {
+  fill: none;
+  stroke: #fafafa;
+  stroke-width: 1px;
+  stroke-dasharray: 400;
+  -webkit-animation: 8s persons forwards;
+  animation: 8s persons forwards;
+  -webkit-animation-delay: 2s;
+   animation-delay: 2s;
+  opacity: 0;
+}
+/* persons */
+svg path {
+  stroke: #fafafa;
+}
+
+@-webkit-keyframes big-frame {
+  from {
+    stroke-dashoffset: 800;
+
+ }
+  to {
+    stroke-dashoffset: 0;
+
+  }
+}
+
+@keyframes big-frame {
+  from {
+    stroke-dashoffset: 800;
+
+ }
+  to {
+    stroke-dashoffset: 0;
+
+  }
+}
+
+@-webkit-keyframes small-frame {
+  from {
+    stroke-dashoffset: 220;
+    opacity: 0;
+ }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes small-frame {
+  from {
+    stroke-dashoffset: 220;
+    opacity: 0;
+ }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes persons {
+  from {
+    stroke-dashoffset: 400;
+    opacity: 0;
+
+ }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes persons {
+  from {
+    stroke-dashoffset: 400;
+    opacity: 0;
+
+ }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
