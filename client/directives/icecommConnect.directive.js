@@ -12,7 +12,7 @@
 
       transclude: true,
       controller: 'chatCtrl',
-      template: '<button ng-click="connect()" ng-hide="foundRoom">Connect</div>',
+      template: '<button ng-click="connect()" class="connect" ng-hide="foundRoom">Connect</div>',
       link: function($scope, ele, atts, comm, chatCtrl) {
         // $scope.text = atts.text || "Connect";
         // $scope.chat();
@@ -28,9 +28,7 @@
 
           $http.get('/findRoom').success(function (data) {
             $scope.message = data;
-            console.log($scope.message);
             if (data.room) {
-              console.log('found room', data.room);
               $scope.room = data.room;
               var connectOptions = createConnectOptions();
               comm.connect($scope.room, connectOptions);
@@ -40,8 +38,7 @@
 
           $timeout(function () {
             if ($scope.foundRoom === false) {
-              $scope.message = 'Could not find room and now creating one';
-              console.log($scope.message);
+              $scope.message = 'Welcome to room ' + $scope.room;
               $scope.room = user.room;
               $http.put('/makeRoom', user); 
               var connectOptions = createConnectOptions();
@@ -49,14 +46,20 @@
               $scope.foundRoom = true;
 
             }
-          }, 4000);
-          console.log(atts.room);
-          
-          console.log($scope.room);
+          }, 2000);
 
-          console.log(atts.room);
-          console.log(atts);
+          // after 15 seconds and no answer 
+          // offer reconnect
+          console.log($scope.peers.length);
+          $timeout(function () {
+            if ($scope.peers.length !== 1) {
+              $scope.foundRoom = false;
+              $scope.reconnect = 'Let\'s try our search again!';
+            }
+          }, 8000);
+
         };
+
 
         function createConnectOptions() {
           var connectOptions = {};

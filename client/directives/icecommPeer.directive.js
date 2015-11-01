@@ -16,7 +16,7 @@
         var comm = icecomm.comm;
         $scope.peers = [];
         comm.on("connected", function(peer){
-          
+          console.log($scope.peers);
           $scope.counter = 10;
           $scope.onTimeout = function(){
               $scope.counter--;
@@ -24,18 +24,14 @@
 
               if ($scope.counter === 0) {
                 // disconnect 
+                $scope.peers.splice($scope.peers.indexOf(peer),1);
                 $timeout.cancel(mytimeout);
                 $scope.connect();
                 $scope.counter = 10;
-
-                
-                
               }
           };
 
           var mytimeout = $timeout($scope.onTimeout,1000);
-
-          
 
           $scope.$apply(function () {
             peer.stream = $sce.trustAsResourceUrl(peer.stream);
@@ -44,10 +40,11 @@
           });
         });
 
+        console.log($scope.peers);
+
         comm.on("disconnect", function(peer){
           // $scope.$apply(function () {
-            console.log(comm, 'on disconnect');
-            console.log('lost peer');
+            $scope.connect();
             $scope.peers.splice($scope.peers.indexOf(peer),1);
             
           // });
