@@ -32,6 +32,7 @@ body {
 
   svg {
     max-width: 600px;
+
   }
 }
 
@@ -78,7 +79,7 @@ body {
   svg {
     max-width: 600px;
     position: relative;
-    left: 10%;
+    left: 18%;
   }
 
   .join {
@@ -117,5 +118,9 @@ body {
 
 }
 
-
+.circular {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 
