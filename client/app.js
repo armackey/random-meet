@@ -16,13 +16,13 @@ angular.module('app',
             templateUrl: '/partials/home.html',
             controller: 'chatCtrl',
             controllerAs: 'chatCtrl'
-        })
-        .state('chat', {
-            url: '/chat',
-            templateUrl: '/partials/chat.html',
-            controller: 'chatCtrl',
-            controllerAs: 'chatCtrl'
         });
+        // .state('chat', {
+        //     url: '/chat',
+        //     templateUrl: '/partials/chat.html',
+        //     controller: 'chatCtrl',
+        //     controllerAs: 'chatCtrl'
+        // });
        
         $urlRouterProvider.otherwise('/');
 

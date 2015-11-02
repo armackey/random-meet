@@ -1,3 +1,24 @@
-<ng-include class="col-xs-12"  src="'../assets/meet_people.html'" ></ng-include>
+<div ng-hide="searching">
+  <ng-include class="col-xs-12"  src="'../assets/meet_people.html'" ></ng-include>
+</div>
+<div ng-hide="foundRoom">
+ {{message.message}} </br>
+</br>
+ {{reconnect}}
+  
+  <icecomm-connect audio="false" ></icecomm-connect>
+</div>
 
-<icecomm-connect audio="false" room="Room" ng-hide="foundRoom"></icecomm-connect>
+  <icecomm-peer id="peer" ></icecomm-peer>
+  <icecomm-local id="local"></icecomm-local/>
+    <circular-progress
+      value="counter"
+      max="60"
+      orientation="1"
+      radius="80"
+      stroke="7"
+      base-color="transparent"
+      progress-color="#fff"
+      iterations="60"
+      animation="easeInOutCubic"
+  ></circular-progress>

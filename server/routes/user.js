@@ -1,7 +1,6 @@
 var User = require('../db/user'),
     express = require('express'),
     router = express.Router();
-    path = require('path');
 
 // remove users whose date has expired
 // if it's over 15 seconds then delete
@@ -12,7 +11,6 @@ setInterval(function () {
     for (var i = 0; i < users.length; i++) {
       if ((Math.floor(users[i].date / 1000)) + 15 < current) {
         users[i].remove();
-        console.log(users[i]);
     }
   }
   });

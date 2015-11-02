@@ -32,7 +32,7 @@
               // disconnect 
               $scope.peers.splice($scope.peers.indexOf(peer),1);
               $timeout.cancel(mytimeout);
-              $scope.chat();
+              $scope.connect();
               $scope.counter = 60;
             }
           };
@@ -40,18 +40,10 @@
           var mytimeout = $timeout($scope.onTimeout,1000);
         });
 
-        $interval(function () {
-          console.log('checking peer object');
-          if ($scope.peers.length !== 1) {
-            // $scope.foundRoom = false;
-            $scope.reconnect = 'Let\'s try our search again!';
-            $scope.chat();
-          }
-        }, 15000);
 
         comm.on("disconnect", function(peer){
           // $scope.$apply(function () {
-            $scope.chat();
+            $scope.connect();
             $scope.peers.splice($scope.peers.indexOf(peer),1);
             
           // });
