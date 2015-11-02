@@ -5,16 +5,15 @@ angular.module('app',
     'icecomm.connect',
     'icecomm.local',
     'icecomm.peer',
-    'icecomm.leave'
+    'icecomm.leave',
+    'angular-circular-progress'
   ])
   .config(function($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
     
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: '/partials/home.html',
-            controller: 'chatCtrl',
-            controllerAs: 'chatCtrl'
+            templateUrl: '/partials/home.html'
         })
         .state('chat', {
             url: '/chat',

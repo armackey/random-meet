@@ -20,6 +20,8 @@ angular.module('app')
       });
 
       $timeout(function () {
+        console.log($scope);
+        console.log($scope.foundRoom);
         if ($scope.foundRoom === false) {
           $scope.message = 'Welcome to room ' + $scope.room;
           $scope.room = user.room;
@@ -30,14 +32,7 @@ angular.module('app')
 
       // after 15 seconds and no answer 
       // offer reconnect
-      
-      $interval(function () {
-        if (!$scope.peers) {
-          $scope.foundRoom = false;
-          $scope.reconnect = 'Let\'s try our search again!';
-          $scope.connect();
-        }
-      }, 15000);
 
    };
+
   }]);

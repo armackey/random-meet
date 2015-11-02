@@ -8,17 +8,16 @@
     return {
       restrict: 'E',
       require: '^icecomm',
-
+      scope: true,
       transclude: true,
       controller: 'chatCtrl',
       template: '<button ng-click="connect()" class="join" ng-hide="foundRoom">Connect</div>',
-      link: function($scope, ele, atts, comm, chatCtrl) {
+      link: function($scope, ele, atts, comm) {
         $scope.text = atts.text || "Connect";
-        // $scope.chat();
         $scope.connect = function() { 
           $state.go('chat');
           $scope.chat();
-          console.log($scope.room);
+          console.log($scope);
 
           var connectOptions = createConnectOptions();
           comm.connect($scope.room, connectOptions);

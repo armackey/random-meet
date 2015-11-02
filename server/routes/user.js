@@ -5,23 +5,18 @@ var User = require('../db/user'),
 
 // remove users whose date has expired
 // if it's over 15 seconds then delete
-var x = Date.now();
-setTimeout(function() {
-var y = Date.now();
-console.log(y-x);
-}, 30000);
+
 setInterval(function () {
   User.find({}, function (err, users) {
-    var y = Date.now();
     var current = new Date().getTime() / 1000;
     for (var i = 0; i < users.length; i++) {
       if ((Math.floor(users[i].date / 1000)) + 15 < current) {
         users[i].remove();
-        console.log('removed at ' + y - x);
+        console.log(users[i]);
     }
   }
   });
-}, 30000);
+}, 15000);
 
 
 router.put('/makeRoom', function(req, res) {

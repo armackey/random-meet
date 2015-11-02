@@ -12,7 +12,10 @@
     "test",
     "tests"
   ],
-   "install": {
+  "install": {
     "path": "client/lib"
+  },
+  "dependencies": {
+    "angular-circular-progress": "~0.0.2"
   }
 }
