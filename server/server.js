@@ -5,7 +5,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     cool = require('cool-ascii-faces'),
     path = require('path');
-    mongoose.connect('mongodb://localhost/cb'),
+    mongoose.connect('mongodb://localhost/cb');
 
 
 app.use(express.static('client'));
