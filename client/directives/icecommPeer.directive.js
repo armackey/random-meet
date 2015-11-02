@@ -8,8 +8,7 @@
     return {
       restrict: 'E',
       require: '^icecomm',
-      scope: true,
-      controller: 'chatCtrl',
+      replace: false,
       template:
       '<video ng-repeat="peer in peers" class="icecomm-peer"' +
         'autoplay ng-src="{{peer.stream}}"></video>',
@@ -18,7 +17,7 @@
         $scope.peers = [];
         console.log($scope);
         comm.on("connected", function(peer){
-          console.log($scope);
+          
           $scope.$apply(function () {
             peer.stream = $sce.trustAsResourceUrl(peer.stream);
             $scope.peers.push(peer);
@@ -43,9 +42,8 @@
 
         $interval(function () {
           console.log('checking peer object');
-          console.log($scope);
           if ($scope.peers.length !== 1) {
-            $scope.foundRoom = false;
+            // $scope.foundRoom = false;
             $scope.reconnect = 'Let\'s try our search again!';
             $scope.chat();
           }

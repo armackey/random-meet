@@ -13,7 +13,9 @@ angular.module('app',
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: '/partials/home.html'
+            templateUrl: '/partials/home.html',
+            controller: 'chatCtrl',
+            controllerAs: 'chatCtrl'
         })
         .state('chat', {
             url: '/chat',
@@ -23,6 +25,5 @@ angular.module('app',
         });
        
         $urlRouterProvider.otherwise('/');
-        $locationProvider.html5Mode(true);
 
   });
