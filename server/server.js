@@ -1,12 +1,13 @@
 var express = require('express'),
+    config = require('./config/config');
     app = express(),
     port = 5000,
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     cool = require('cool-ascii-faces'),
     path = require('path');
-    mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://armackey:redred2@ds049104.mongolab.com:49104/randommeet');
-    
+    mongoose.connect(process.env.MONGOLAB_URI || config.db);
+
 
 
 app.use(express.static('client'));
