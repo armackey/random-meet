@@ -1,5 +1,5 @@
 var express = require('express'),
-    config = require('./config/config');
+    config = require('./config/config'),
     app = express(),
     port = 5000,
     bodyParser = require('body-parser'),
