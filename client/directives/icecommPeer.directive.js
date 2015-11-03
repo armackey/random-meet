@@ -44,6 +44,7 @@
         comm.on("disconnect", function(peer){
           // $scope.$apply(function () {
             $scope.connect();
+            $scope.searching = false;
             $scope.peers.splice($scope.peers.indexOf(peer),1);
             
           // });

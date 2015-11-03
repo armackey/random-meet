@@ -5,7 +5,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     cool = require('cool-ascii-faces'),
     path = require('path');
-    mongoose.connect('mongodb://localhost/cb');
+    mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://armackey:redred2@ds049104.mongolab.com:49104/randommeet');
 
 
 app.use(express.static('client'));
@@ -19,5 +19,5 @@ app.use(require('./routes/user'));
 
 
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || port);
 console.log('server running on', port);
